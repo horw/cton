@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Chinese Tones</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Learn Chinese Tones</h1>
+        <p>Master the four tones of Mandarin Chinese</p>
+    </header>
+
+    <main>
+        <section id="voice-practice">
+            <h2>Voice Practice</h2>
+            <p>Practice your tone pronunciation with microphone feedback</p>
+            
+            <div class="voice-practice-container">
+                <div class="tone-to-practice">
+                    <h3>Current Character:</h3>
+                    <div id="voice-character-display">
+                        <div class="voice-chinese-character">妈</div>
+                        <div class="voice-pinyin">mā</div>
+                        <div class="voice-meaning">mother</div>
+                        <div class="voice-tone-number">Tone: 1st (High and level)</div>
+                    </div>
+                    <div class="voice-controls">
+                        <button id="play-example">Play Example</button>
+                        <button id="next-voice-character">Next Character</button>
+                    </div>
+                </div>
+                
+                <div class="voice-recording">
+                    <h3>Your Pronunciation:</h3>
+                    <div class="microphone-container">
+                        <button id="start-recording" class="mic-button">
+                            <span class="mic-icon">🎤</span>
+                            <span class="mic-text">Start Recording</span>
+                        </button>
+                        <div id="recording-status">Click to start recording</div>
+                        <div id="mic-support-message" class="hidden">Your browser doesn't support microphone access. You can still practice by listening to examples and speaking aloud.</div>
+                    </div>
+                    <div id="feedback-container">
+                        <div id="tone-feedback">Waiting for your pronunciation...</div>
+                        <div id="tone-accuracy"></div>
+                        <div id="tone-visualization">
+                            <canvas id="tone-canvas" width="300" height="150"></canvas>
+                        </div>
+                        <div id="tone-tips"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="introduction">
+            <h2>Introduction to Chinese Tones</h2>
+            <p>Mandarin Chinese has four main tones plus a neutral tone. Each tone changes the meaning of a syllable:</p>
+            <ul class="tone-list">
+                <li>
+                    <span class="tone-number">1st Tone (ˉ):</span> 
+                    <span class="tone-description">High and level</span>
+                    <span class="tone-example">mā (妈) - mother</span>
+                </li>
+                <li>
+                    <span class="tone-number">2nd Tone (ˊ):</span> 
+                    <span class="tone-description">Rising</span>
+                    <span class="tone-example">má (麻) - hemp</span>
+                </li>
+                <li>
+                    <span class="tone-number">3rd Tone (ˇ):</span> 
+                    <span class="tone-description">Falling then rising</span>
+                    <span class="tone-example">mǎ (马) - horse</span>
+                </li>
+                <li>
+                    <span class="tone-number">4th Tone (ˋ):</span> 
+                    <span class="tone-description">Falling</span>
+                    <span class="tone-example">mà (骂) - scold</span>
+                </li>
+                <li>
+                    <span class="tone-number">Neutral Tone:</span> 
+                    <span class="tone-description">Light and short</span>
+                    <span class="tone-example">ma (吗) - question particle</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="practice">
+            <h2>Practice Tones</h2>
+            <div class="practice-container">
+                <div class="tone-selector">
+                    <h3>Select a tone to practice:</h3>
+                    <div class="tone-buttons">
+                        <button class="tone-btn" data-tone="1">1st Tone</button>
+                        <button class="tone-btn" data-tone="2">2nd Tone</button>
+                        <button class="tone-btn" data-tone="3">3rd Tone</button>
+                        <button class="tone-btn" data-tone="4">4th Tone</button>
+                        <button class="tone-btn" data-tone="0">Neutral Tone</button>
+                        <button class="tone-btn" data-tone="all">All Tones</button>
+                    </div>
+                </div>
+                
+                <div class="practice-area">
+                    <div id="character-display">
+                        <div class="chinese-character">妈</div>
+                        <div class="pinyin">mā</div>
+                        <div class="meaning">mother</div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="play-sound">Play Sound</button>
+                        <button id="next-character">Next Character</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tone-pairs">
+            <h2>Tone Pairs Practice</h2>
+            <p>Practice combinations of tones which can be challenging:</p>
+            <div class="tone-pair-container">
+                <div class="tone-pair-buttons">
+                    <button class="pair-btn" data-pair="1-3">1st + 3rd</button>
+                    <button class="pair-btn" data-pair="2-4">2nd + 4th</button>
+                    <button class="pair-btn" data-pair="3-3">3rd + 3rd</button>
+                    <button class="pair-btn" data-pair="4-1">4th + 1st</button>
+                    <button class="pair-btn" data-pair="random">Random Pair</button>
+                </div>
+                <div id="tone-pair-display">
+                    <div class="tone-pair-character">你好</div>
+                    <div class="tone-pair-pinyin">nǐ hǎo</div>
+                    <div class="tone-pair-meaning">hello</div>
+                </div>
+                <div class="controls">
+                    <button id="play-pair">Play Sound</button>
+                    <button id="next-pair">Next Pair</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tone-quiz">
+            <h2>Test Your Knowledge</h2>
+            <div class="quiz-container">
+                <div id="quiz-character">
+                    <div class="quiz-chinese">妈</div>
+                </div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-tone="1">1st Tone</button>
+                    <button class="quiz-btn" data-tone="2">2nd Tone</button>
+                    <button class="quiz-btn" data-tone="3">3rd Tone</button>
+                    <button class="quiz-btn" data-tone="4">4th Tone</button>
+                    <button class="quiz-btn" data-tone="0">Neutral Tone</button>
+                </div>
+                <div id="quiz-result"></div>
+                <div id="quiz-score">Score: 0</div>
+                <button id="next-quiz">Next Character</button>
+            </div>
+        </section>
+
+        <section id="tone-game">
+            <h2>Tone Matching Game</h2>
+            <div class="game-instructions">
+                <p>Match the characters with the same tone. Find all pairs to win!</p>
+                <button id="start-game">Start New Game</button>
+                <div id="game-timer">Time: 0s</div>
+                <div id="game-score">Matches: 0/8</div>
+            </div>
+            <div class="game-board">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+        </section>
+        
+        <section id="tone-visualization-tool">
+            <h2>Interactive Tone Visualizer</h2>
+            <p>See how the pitch changes for each tone. Click and drag to create your own tone patterns.</p>
+            
+            <div class="visualizer-container">
+                <div class="tone-selector-small">
+                    <button class="visualizer-tone-btn active" data-tone="1">1st Tone</button>
+                    <button class="visualizer-tone-btn" data-tone="2">2nd Tone</button>
+                    <button class="visualizer-tone-btn" data-tone="3">3rd Tone</button>
+                    <button class="visualizer-tone-btn" data-tone="4">4th Tone</button>
+                    <button class="visualizer-tone-btn" data-tone="0">Neutral</button>
+                </div>
+                
+                <div class="visualizer-display">
+                    <canvas id="interactive-canvas" width="500" height="200"></canvas>
+                    <div class="visualizer-labels">
+                        <span>High</span>
+                        <span>Mid</span>
+                        <span>Low</span>
+                    </div>
+                </div>
+                
+                <div class="visualizer-controls">
+                    <button id="play-visualizer">Play Tone</button>
+                    <button id="draw-visualizer">Draw Your Own</button>
+                    <button id="reset-visualizer">Reset</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created to help language learners master Chinese tones</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
